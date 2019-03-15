@@ -1,0 +1,748 @@
+[{
+    "name": "B Resort & Spa - Disney Springs Resort Area",
+    "permalink": "b-resort-spa-disney-springs",
+    "dinings": []
+}, {
+    "name": "Bay Lake Tower at Disney's Contemporary Resort",
+    "permalink": "bay-lake-tower-at-disneys-contemporary-resort",
+    "dinings": [{
+        "name": "Top of the World Lounge",
+        "permalink": "top-world-lounge"
+    }, {
+        "name": "Private Dining at Contemporary and Bay Lake Tower",
+        "permalink": "bay-lake-tower-room-service"
+    }]
+}, {
+    "name": "Best Western Lake Buena Vista – Disney Springs Area",
+    "permalink": "best-western-lake-buena-vista-resort-hotel",
+    "dinings": []
+}, {
+    "name": "Boulder Ridge Villas at Disney's Wilderness Lodge",
+    "permalink": "disneys-wilderness-lodge-villas",
+    "dinings": []
+}, {
+    "name": "Copper Creek Villas & Cabins at Disney's Wilderness Lodge",
+    "permalink": "copper-creek-villas",
+    "dinings": []
+}, {
+    "name": "Disney's All-Star Movies Resort",
+    "permalink": "disneys-all-star-movies-resort",
+    "dinings": [{
+        "name": "World Premiere Food Court",
+        "permalink": "world-premier-food-court"
+    }, {
+        "name": "Silver Screen Spirits Bar",
+        "permalink": "silver-screen-spirits-bar"
+    }, {
+        "name": "Double Feature",
+        "permalink": "double-feature-market"
+    }, {
+        "name": "All-Stars In-Room Dining",
+        "permalink": "all-stars-movies-delivery"
+    }]
+}, {
+    "name": "Disney's All-Star Music Resort",
+    "permalink": "disneys-all-star-music-resort",
+    "dinings": [{
+        "name": "Intermission Food Court",
+        "permalink": "intermission-food-court"
+    }, {
+        "name": "Singing Spirits Bar",
+        "permalink": "singing-spirits-pool-bar"
+    }, {
+        "name": "Maestro Mickey's",
+        "permalink": "maestro-mickeys-market"
+    }, {
+        "name": "All-Stars In-Room Dining",
+        "permalink": "all-stars-music-delivery"
+    }]
+}, {
+    "name": "Disney's All-Star Sports Resort",
+    "permalink": "disneys-all-star-sports-resort",
+    "dinings": [{
+        "name": "End Zone Food Court",
+        "permalink": "end-zone-food-court"
+    }, {
+        "name": "All Star Sports Pizza Delivery",
+        "permalink": "sports-pizza-delivery"
+    }, {
+        "name": "Grandstand Spirits Bar",
+        "permalink": "grandstand-spirits-pool-bar"
+    }, {
+        "name": "Sport Goofy Gifts & Sundries",
+        "permalink": "sport-goofy-gifts-sundries-market"
+    }, {
+        "name": "All-Stars In-Room Dining",
+        "permalink": "all-stars-sports-delivery"
+    }]
+}, {
+    "name": "Disney's Animal Kingdom Lodge - Jambo House",
+    "permalink": "disneys-animal-kingdom-lodge",
+    "dinings": [{
+        "name": "Boma - Flavors of Africa",
+        "permalink": "boma-flavors-of-africa"
+    }, {
+        "name": "Jiko - The Cooking Place",
+        "permalink": "jiko-the-cooking-place"
+    }, {
+        "name": "The Mara",
+        "permalink": "mara"
+    }, {
+        "name": "Victoria Falls Lounge",
+        "permalink": "victoria-falls-lounge"
+    }, {
+        "name": "Uzima Springs Pool Bar",
+        "permalink": "uzima-springs-pool-bar"
+    }, {
+        "name": "Jambo House Private Dining",
+        "permalink": "jambo-private-dining"
+    }, {
+        "name": "Zawadi Marketplace",
+        "permalink": "zawadi-marketplace-market"
+    }]
+}, {
+    "name": "Disney's Animal Kingdom Lodge - Kidani Village",
+    "permalink": "disneys-animal-kingdom-villas",
+    "dinings": [{
+        "name": "Sanaa",
+        "permalink": "sanaa"
+    }, {
+        "name": "Maji Pool Bar",
+        "permalink": "maji-pool-bar"
+    }, {
+        "name": "Kidani Village Private Dining",
+        "permalink": "kidani-private-dining"
+    }, {
+        "name": "Johari Treasures",
+        "permalink": "johari-treasures"
+    }, {
+        "name": "Sanaa Quick Service",
+        "permalink": "sanaa-qs"
+    }]
+}, {
+    "name": "Disney's Art of Animation Resort",
+    "permalink": "disneys-art-of-animation-resort",
+    "dinings": [{
+        "name": "Landscape of Flavors",
+        "permalink": "landscape-of-flavors"
+    }, {
+        "name": "The Drop Off Pool Bar",
+        "permalink": "the-drop-off"
+    }, {
+        "name": "Art of Animation In Room Delivery",
+        "permalink": "art-of-animation-delivery"
+    }, {
+        "name": "Ink and Paint",
+        "permalink": "ink-and-paint-market"
+    }]
+}, {
+    "name": "Disney's Beach Club Resort",
+    "permalink": "disneys-beach-club-resort",
+    "dinings": [{
+        "name": "Beaches & Cream Soda Shop",
+        "permalink": "beaches-and-cream"
+    }, {
+        "name": "Cape May Cafe",
+        "permalink": "cape-may-cafe"
+    }, {
+        "name": "Yacht & Beach Club Private Dining",
+        "permalink": "yacht-beach-club-private-dining"
+    }, {
+        "name": "Beach Club Marketplace",
+        "permalink": "beach-club-marketplace"
+    }, {
+        "name": "Hurricane Hanna's Grill",
+        "permalink": "hurricane-hannas-grill"
+    }, {
+        "name": "Martha's Vineyard Lounge",
+        "permalink": "marthas-vineyard-lounge"
+    }, {
+        "name": "Beaches & Cream To Go",
+        "permalink": "beaches-cream-to-go"
+    }, {
+        "name": "The Solarium - Afternoon Tea",
+        "permalink": "the-solarium-afternoon-tea"
+    }]
+}, {
+    "name": "Disney's Beach Club Villas",
+    "permalink": "disneys-beach-club-villas",
+    "dinings": []
+}, {
+    "name": "Disney's BoardWalk Inn",
+    "permalink": "disneys-boardwalk-inn",
+    "dinings": [{
+        "name": "Big River Grille & Brewing Works",
+        "permalink": "big-river-grille-brewing-works"
+    }, {
+        "name": "ESPN Club",
+        "permalink": "espn-club"
+    }, {
+        "name": "Flying Fish",
+        "permalink": "flying-fish-cafe"
+    }, {
+        "name": "Kouzzina by Cat Cora",
+        "permalink": "kouzzina-by-cat-cora"
+    }, {
+        "name": "Belle Vue Lounge",
+        "permalink": "belle-vue-lounge"
+    }, {
+        "name": "BoardWalk Bakery",
+        "permalink": "boardwalk-bakery"
+    }, {
+        "name": "BoardWalk Pizza Window",
+        "permalink": "boardwalk-pizza-window"
+    }, {
+        "name": "AbracadaBar",
+        "permalink": "abracadabar"
+    }, {
+        "name": "BoardWalk Joe's",
+        "permalink": "boardwalk-joes"
+    }, {
+        "name": "BoardWalk To Go",
+        "permalink": "boardwalk-to-go"
+    }, {
+        "name": "Leaping Horse Libations",
+        "permalink": "leaping-horse-libations"
+    }, {
+        "name": "Funnel Cake Kiosk",
+        "permalink": "funnel-cake-kiosk-boardwalk"
+    }, {
+        "name": "Trattoria al Forno",
+        "permalink": "trattoria-al-forno"
+    }, {
+        "name": "Dunddy's Sundries",
+        "permalink": "dunddy-sundries-market"
+    }, {
+        "name": "The Screen Door",
+        "permalink": "the-screen-door-market"
+    }, {
+        "name": "Surray Bike Rentals - Beverages",
+        "permalink": "surray-bike-rentals-beverages"
+    }, {
+        "name": "Ample Hills Creamery",
+        "permalink": "ample-hills"
+    }, {
+        "name": "Boardwalk Private Dining",
+        "permalink": "boardwalk-private-dining"
+    }]
+}, {
+    "name": "Disney's BoardWalk Villas",
+    "permalink": "disneys-boardwalk-villas",
+    "dinings": []
+}, {
+    "name": "Disney's Caribbean Beach Resort",
+    "permalink": "disneys-caribbean-beach-resort",
+    "dinings": [{
+        "name": "Shutters at Old Port Royale",
+        "permalink": "shutters-at-old-port-royale"
+    }, {
+        "name": "Old Port Royale Food Court",
+        "permalink": "old-port-royale-food-court"
+    }, {
+        "name": "Banana Cabana",
+        "permalink": "banana-cabana"
+    }, {
+        "name": "Caribbean Beach Pizza Delivery",
+        "permalink": "cb-pizza"
+    }, {
+        "name": "Calypso Trading Post",
+        "permalink": "calypso-trading-post-market"
+    }, {
+        "name": "Island Markets",
+        "permalink": "island-markets"
+    }, {
+        "name": "Spyglass Grill",
+        "permalink": "spyglass-grill"
+    }, {
+        "name": "Sebastian's Bistro",
+        "permalink": "sebastians-bistro"
+    }, {
+        "name": "Centertown Market",
+        "permalink": "centertown-market"
+    }]
+}, {
+    "name": "Disney's Contemporary Resort",
+    "permalink": "disneys-contemporary-resort",
+    "dinings": [{
+        "name": "California Grill",
+        "permalink": "california-grill"
+    }, {
+        "name": "Chef Mickey's",
+        "permalink": "chef-mickeys"
+    }, {
+        "name": "The Wave... of American Flavors",
+        "permalink": "the-wave-restaurant"
+    }, {
+        "name": "Contempo Cafe",
+        "permalink": "contempo-cafe"
+    }, {
+        "name": "Outer Rim Lounge",
+        "permalink": "outer-rim-lounge"
+    }, {
+        "name": "Cove Bar",
+        "permalink": "cove-bar"
+    }, {
+        "name": "The Sand Bar",
+        "permalink": "sand-bar"
+    }, {
+        "name": "Contemporary Grounds",
+        "permalink": "contemporary-grounds"
+    }, {
+        "name": "Bay View Gifts",
+        "permalink": "bay-view-gifts"
+    }, {
+        "name": "Contemporary Market",
+        "permalink": "contemporary-market"
+    }, {
+        "name": "Private Dining at Contemporary and Bay Lake Tower",
+        "permalink": "contemporary-private-dining"
+    }]
+}, {
+    "name": "Disney's Coronado Springs Resort",
+    "permalink": "disneys-coronado-springs-resort",
+    "dinings": [{
+        "name": "Maya Grill",
+        "permalink": "maya-grill"
+    }, {
+        "name": "Cafe Rix",
+        "permalink": "cafe-rix"
+    }, {
+        "name": "El Mercado de Coronado",
+        "permalink": "pepper-market"
+    }, {
+        "name": "Laguna Dock Bar",
+        "permalink": "laguna-dock-bar"
+    }, {
+        "name": "Rix Sports Bar & Grill ",
+        "permalink": "rix-lounge"
+    }, {
+        "name": "Siestas Cantina",
+        "permalink": "siestas-cantina"
+    }, {
+        "name": "Las Ventanas",
+        "permalink": "las-ventanas"
+    }, {
+        "name": "Panchito's Gifts & Sundries",
+        "permalink": "panchitos-gifts-sundries-market"
+    }, {
+        "name": "Coronado Springs Private Dining",
+        "permalink": "coronado-springs-private-dining"
+    }, {
+        "name": "Three Bridges Bar & Grill",
+        "permalink": "three-bridges"
+    }, {
+        "name": "Toledo - Tapas, Steak & Seafood",
+        "permalink": "toledo"
+    }]
+}, {
+    "name": "Disney's Grand Floridian Resort & Spa",
+    "permalink": "disneys-grand-floridian-resort",
+    "dinings": [{
+        "name": "1900 Park Fare",
+        "permalink": "1900-park-fare"
+    }, {
+        "name": "Cítricos",
+        "permalink": "citricos"
+    }, {
+        "name": "Grand Floridian Cafe",
+        "permalink": "grand-floridian-cafe"
+    }, {
+        "name": "Narcoossee's",
+        "permalink": "narcoossees"
+    }, {
+        "name": "Victoria & Albert's",
+        "permalink": "victoria-alberts"
+    }, {
+        "name": "Grand Floridian Gingerbread House",
+        "permalink": "Grand-FL-Gingerbread-House"
+    }, {
+        "name": "Gasparilla Island Grill",
+        "permalink": "gasparilla-grill-games"
+    }, {
+        "name": "Garden View Tea Room",
+        "permalink": "garden-view-tea-room"
+    }, {
+        "name": "Mizner's Lounge",
+        "permalink": "mizners-lounge"
+    }, {
+        "name": "Beaches Pool Bar & Grill",
+        "permalink": "beaches-pool-bar-grill"
+    }, {
+        "name": "Courtyard Pool Bar",
+        "permalink": "courtyard-pool-bar"
+    }, {
+        "name": "Sandy Cove",
+        "permalink": "sandycove-market"
+    }, {
+        "name": "Grand Floridian Private Dining",
+        "permalink": "grand-floridian-private-dining"
+    }]
+}, {
+    "name": "Disney's Old Key West Resort",
+    "permalink": "disneys-old-key-west-resort",
+    "dinings": [{
+        "name": "Olivia's Cafe",
+        "permalink": "olivias-cafe"
+    }, {
+        "name": "Good's Food to Go",
+        "permalink": "goods-food-to-go"
+    }, {
+        "name": "Turtle Shack",
+        "permalink": "turtle-shack"
+    }, {
+        "name": "Gurgling Suitcase Libations and Spirits",
+        "permalink": "gurgling-suitcase"
+    }, {
+        "name": "Conch Flats General Store",
+        "permalink": "conch-flats-general-store-market"
+    }]
+}, {
+    "name": "Disney's Polynesian Village Resort",
+    "permalink": "disneys-polynesian-resort",
+    "dinings": [{
+        "name": "Kona Cafe",
+        "permalink": "kona-cafe"
+    }, {
+        "name": "'Ohana",
+        "permalink": "ohana"
+    }, {
+        "name": "Disney's Spirit of Aloha Dinner Show",
+        "permalink": "spirit-of-aloha-dinner-show"
+    }, {
+        "name": "Capt. Cook's",
+        "permalink": "captain-cooks"
+    }, {
+        "name": "Kona Island",
+        "permalink": "kona-island"
+    }, {
+        "name": "Tambu Lounge",
+        "permalink": "tambu-lounge"
+    }, {
+        "name": "Barefoot Pool Bar",
+        "permalink": "barefoot-pool-bar"
+    }, {
+        "name": "Trader Sam's Grog Grotto",
+        "permalink": "trader-sams-grog-grotto"
+    }, {
+        "name": "Pineapple Lanai",
+        "permalink": "pineapple-lanai"
+    }, {
+        "name": "Moana Mercantile",
+        "permalink": "moana-mercantile"
+    }, {
+        "name": "Private Dining (Room Service)",
+        "permalink": "private-dining-room-service"
+    }, {
+        "name": "Oasis Bar and Grill",
+        "permalink": "oasis-polynesian"
+    }]
+}, {
+    "name": "Disney's Polynesian Villas & Bungalows",
+    "permalink": "disneys-polynesian-villas-bungalows",
+    "dinings": []
+}, {
+    "name": "Disney's Pop Century Resort",
+    "permalink": "disneys-pop-century-resort",
+    "dinings": [{
+        "name": "Everything POP Shopping and Dining",
+        "permalink": "everything-pop-food-court"
+    }, {
+        "name": "Petals Pool Bar",
+        "permalink": "petals-pool-bar"
+    }, {
+        "name": "Everything Pop",
+        "permalink": "everything-pop-market"
+    }, {
+        "name": "Pop Century In Room Delivery",
+        "permalink": "pop-pizza-delivery"
+    }]
+}, {
+    "name": "Disney's Port Orleans Resort - French Quarter",
+    "permalink": "disneys-port-orleans-resort-french-quarter",
+    "dinings": [{
+        "name": "Sassagoula Floatworks & Food Factory",
+        "permalink": "sassagoula-floatworks-food-factory"
+    }, {
+        "name": "Scat Cat's Club",
+        "permalink": "scat-cats-club"
+    }, {
+        "name": "Mardi Grogs",
+        "permalink": "mardi-grogs"
+    }, {
+        "name": "Port Orleans French Quarter Pizza Delivery",
+        "permalink": "french-quarter-pizza"
+    }, {
+        "name": "Jackson Square",
+        "permalink": "jackson-square-market"
+    }]
+}, {
+    "name": "Disney's Port Orleans Resort - Riverside",
+    "permalink": "disneys-port-orleans-resort-riverside",
+    "dinings": [{
+        "name": "Boatwright's Dining Hall",
+        "permalink": "boatwrights-dining-hall"
+    }, {
+        "name": "Riverside Mill Food Court",
+        "permalink": "riverside-mill-food-court"
+    }, {
+        "name": "River Roost Lounge",
+        "permalink": "river-roost-lounge"
+    }, {
+        "name": "Muddy Rivers",
+        "permalink": "muddy-rivers"
+    }, {
+        "name": "Port Orleans Riverside Pizza Delivery",
+        "permalink": "riverside-pizza"
+    }, {
+        "name": "Fulton's General Store",
+        "permalink": "fultons--general-store-market"
+    }]
+}, {
+    "name": "Disney's Riviera Resort",
+    "permalink": "disneys-riviera-resort",
+    "dinings": [{
+        "name": "Topolino's Terrace - Flavors of the Riviera",
+        "permalink": "topolinos-terrace-flavors-riviera"
+    }, {
+        "name": "Le Petit Cafe",
+        "permalink": "petit-cafe"
+    }, {
+        "name": "Primo Piatto",
+        "permalink": "primo-piatto"
+    }, {
+        "name": "Bar Riva",
+        "permalink": "bar-riva"
+    }]
+}, {
+    "name": "Disney's Saratoga Springs Resort & Spa",
+    "permalink": "disneys-saratoga-springs-resort-spa",
+    "dinings": [{
+        "name": "The Turf Club Bar and Grill",
+        "permalink": "turf-club-bar-grill"
+    }, {
+        "name": "The Artist's Palette",
+        "permalink": "artists-palette"
+    }, {
+        "name": "The Paddock Grill",
+        "permalink": "paddock-grill"
+    }, {
+        "name": "The Turf Club Lounge",
+        "permalink": "turf-club-lounge"
+    }, {
+        "name": "Backstretch Pool Bar",
+        "permalink": "backstretch-pool-bar"
+    }, {
+        "name": "On the Rocks",
+        "permalink": "on-rocks"
+    }, {
+        "name": "Saratoga Springs Private Dining",
+        "permalink": "saratoga-springs-private-dining"
+    }]
+}, {
+    "name": "Disney's Wilderness Lodge",
+    "permalink": "disneys-wilderness-lodge",
+    "dinings": [{
+        "name": "Artist Point",
+        "permalink": "artist-point"
+    }, {
+        "name": "Whispering Canyon Cafe",
+        "permalink": "whispering-canyon-cafe"
+    }, {
+        "name": "Roaring Fork",
+        "permalink": "roaring-fork"
+    }, {
+        "name": "Territory Lounge",
+        "permalink": "territory-lounge"
+    }, {
+        "name": "Miss Jenny's In-Room Dining",
+        "permalink": "Miss-Jennys-In-Room-Dining"
+    }, {
+        "name": "Trout Pass Pool Bar",
+        "permalink": "trout-pass"
+    }, {
+        "name": "Wilderness Lodge Mercantile",
+        "permalink": "wilderness-lodge-mercantile-market"
+    }, {
+        "name": "Geyser Point Bar & Grill",
+        "permalink": "geyser-point-bar-grill"
+    }]
+}, {
+    "name": "Disney's Yacht Club Resort",
+    "permalink": "disneys-yacht-club-resort",
+    "dinings": [{
+        "name": "Captain's Grille",
+        "permalink": "captains-grille"
+    }, {
+        "name": "Yachtsman Steakhouse",
+        "permalink": "yachtsman-steakhouse"
+    }, {
+        "name": "Ale and Compass Lounge",
+        "permalink": "ale-compass-lounge"
+    }, {
+        "name": "Crew's Cup Lounge",
+        "permalink": "crews-cup-lounge"
+    }, {
+        "name": "Fittings & Farings",
+        "permalink": "fittings-farings-market"
+    }, {
+        "name": "Market at Ale and Compass",
+        "permalink": "market-at-ale-and-compass"
+    }, {
+        "name": "Ale & Compass Restaurant",
+        "permalink": "ale-compass-restaurant"
+    }]
+}, {
+    "name": "Dolphin at Walt Disney World",
+    "permalink": "dolphin-at-walt-disney-world",
+    "dinings": [{
+        "name": "Todd English's bluezoo",
+        "permalink": "todd-english-bluezoo"
+    }, {
+        "name": "Fresh Mediterranean Market",
+        "permalink": "fresh-mediterranean-market"
+    }, {
+        "name": "Shula's Steak House",
+        "permalink": "shulas-steak-house"
+    }, {
+        "name": "The Fountain Eats and Sweets",
+        "permalink": "fountain-eats-sweets"
+    }, {
+        "name": "Picabu",
+        "permalink": "picabu"
+    }, {
+        "name": "Cabana Bar and Beach Club",
+        "permalink": "cabana-bar-beach-club"
+    }, {
+        "name": "Lobby Lounge",
+        "permalink": "lobby-lounge"
+    }, {
+        "name": "American Dream Food Truck",
+        "permalink": "american-dream"
+    }, {
+        "name": "Java's Coffee Food Truck",
+        "permalink": "javas-coffee"
+    }, {
+        "name": "Juan and Only Food Truck",
+        "permalink": "juan-only"
+    }, {
+        "name": "Oasis Food Truck",
+        "permalink": "oasis"
+    }, {
+        "name": "Dolphin Room Service",
+        "permalink": "dolphin-room-service"
+    }, {
+        "name": "Phins",
+        "permalink": "phins"
+    }, {
+        "name": "Fuel",
+        "permalink": "fuel"
+    }]
+}, {
+    "name": "DoubleTree Suites by Hilton Orlando – Disney Springs Area",
+    "permalink": "doubletree-suites-lake-buena-vista",
+    "dinings": []
+}, {
+    "name": "Four Seasons Resort Orlando at Walt Disney World Resort",
+    "permalink": "four-seasons-resort-orlando",
+    "dinings": []
+}, {
+    "name": "Hilton Orlando Buena Vista Palace – Disney Springs Area",
+    "permalink": "buena-vista-palace",
+    "dinings": [{
+        "name": "The Outback Steaks and Seafood",
+        "permalink": "the-outback-steaks-seafood"
+    }]
+}, {
+    "name": "Hilton Orlando Lake Buena Vista - Disney Springs Area",
+    "permalink": "hilton-at-walt-disney-world-resort",
+    "dinings": [{
+        "name": "Andiamo Italian Bistro & Grille",
+        "permalink": "andiamo-italian-bistro-grille"
+    }, {
+        "name": "Benihana-Steakhouse & Sushi",
+        "permalink": "benihana-steakhouse-sushi"
+    }]
+}, {
+    "name": "Holiday Inn Orlando - Disney Springs Area",
+    "permalink": "holiday-inn-in-the-walt-disney-world-resort",
+    "dinings": []
+}, {
+    "name": "Reflections - A Disney Lakeside Lodge",
+    "permalink": "disney-reflections",
+    "dinings": []
+}, {
+    "name": "Shades of Green at Walt Disney World",
+    "permalink": "shades-of-green-at-walt-disney-world",
+    "dinings": []
+}, {
+    "name": "Swan at Walt Disney World",
+    "permalink": "swan-at-walt-disney-world",
+    "dinings": [{
+        "name": "Garden Grove",
+        "permalink": "garden-grove"
+    }, {
+        "name": "Il Mulino",
+        "permalink": "il-mulino-new-york-trattoria"
+    }, {
+        "name": "Kimonos",
+        "permalink": "kimonos"
+    }, {
+        "name": "Java Bar",
+        "permalink": "java-bar"
+    }, {
+        "name": "Splash Terrace",
+        "permalink": "splash-terrace"
+    }, {
+        "name": "Swan Room Service",
+        "permalink": "swan-room-service"
+    }]
+}, {
+    "name": "The Cabins at Disney's Fort Wilderness Resort",
+    "permalink": "fort-wilderness-resort-cabins",
+    "dinings": [{
+        "name": "Hoop-Dee-Doo Musical Revue",
+        "permalink": "hoop-dee-doo-revue"
+    }, {
+        "name": "Mickey's Backyard BBQ",
+        "permalink": "mickeys-backyard-bbq"
+    }, {
+        "name": "Trail's End Restaurant",
+        "permalink": "trails-end-restaurant"
+    }, {
+        "name": "Meadow Snack Bar",
+        "permalink": "meadow-snack-bar"
+    }, {
+        "name": "Trail's End Restaurant - To Go Counter",
+        "permalink": "trails-end-restaurant-to-go-counter"
+    }, {
+        "name": "Crockett's Tavern",
+        "permalink": "crocketts-tavern"
+    }, {
+        "name": "Chuck Wagon",
+        "permalink": "chuck-wagon"
+    }, {
+        "name": "Settlement Trading Post",
+        "permalink": "settlement-trading-post-market"
+    }, {
+        "name": "Meadows Trading  Post",
+        "permalink": "meadows-trading-post-market"
+    }, {
+        "name": "Settlement Sno-Cone Cart",
+        "permalink": "settlement-sno-cone"
+    }]
+}, {
+    "name": "The Villas at Disney's Grand Floridian Resort & Spa",
+    "permalink": "the-villas-at-disneys-grand-floridian-resort-and-spa",
+    "dinings": []
+}, {
+    "name": "Treehouse Villas at Disney's Saratoga Springs Resort",
+    "permalink": "treehouse-villas-at-disneys-saratoga-springs-resort",
+    "dinings": []
+}, {
+    "name": "Wyndham Garden Lake Buena Vista Disney Springs Resort Area",
+    "permalink": "wyndham-lake-buena-vista-resort",
+    "dinings": [{
+        "name": "LakeView Restaurant",
+        "permalink": "lakeview-restaurant"
+    }]
+}]

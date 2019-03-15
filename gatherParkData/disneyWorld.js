@@ -34,7 +34,6 @@ parksArray.forEach(function (parkObject) {
 
 function getParkTimes(parkObject) {
     var returnJSON = {};
-
     return new Promise((resolve, reject) => {
         parkObject.GetOpeningTimes().then(function (openingTimes) {
             var time = parkObject.TimeNow();
