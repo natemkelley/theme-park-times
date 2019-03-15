@@ -23,6 +23,7 @@ exports.saveRide = function (ride) {
     return new Promise((resolve, reject) => {
 
         var saveThisRide = new rideTimeModel({
+            id: ride.id,
             name: ride.name,
             waitTime: ride.waitTime,
             lastUpdate: ride.lastUpdate,
@@ -49,7 +50,6 @@ function removeAll() {
     });
 }
 removeAll();
-
 /*exports.saveTwitterSimulation = function (twitterSimulationData, user, nameOfSim, private, groups) {
     return new Promise((resolve, reject) => {
         var saveThisTwitterSimulation = new twitterSimulationModel({

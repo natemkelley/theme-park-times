@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var RideTimeSchema = new Schema({
+    id: String,
     name: String,
     waitTime: Number,
     lastUpdate: Date,

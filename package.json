@@ -16,6 +16,7 @@
     "fs": "0.0.1-security",
     "moment": "^2.24.0",
     "mongoose": "^5.4.19",
+    "request": "^2.88.0",
     "themeparks": "^4.7.11"
   },
   "devDependencies": {
