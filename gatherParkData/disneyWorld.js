@@ -1,20 +1,8 @@
 var colors = require('colors');
 var Themeparks = require("themeparks");
 var moment = require("moment");
+var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
 var FIFTEENMINUTES = 1000 * 60 * 15;
-
-
-const fs = require('fs');
-
-fs.readdir('./gatherParkData/controllers/', (err, files) => {
-  files.forEach(file => {
-    console.log('./gatherParkData/controllers/'+file);
-  });
-});
-require('./gatherParkData/controllers/disneyParkTimesController.js')
-
-
-
 
 
 //parks
@@ -34,10 +22,9 @@ parksArray.push(disneyHollywoodStudios)
 parksArray.forEach(function (parkObject) {
     getParkTimes(parkObject).then((parkTimesObject) => {
         if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
-            //console.log(parkTimesObject);
             getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
                 parkRidesArray.forEach(function (ride) {
-                    //console.log(ride)
+                    disneyParkController.saveRide(ride);
                 })
             });
         }
@@ -79,7 +66,7 @@ function getWaitTimesparkObject(parkObject) {
                 if ((ride.schedule != undefined) || ride.status == "Operating") {
                     rideObject.name = ride.name;
                     rideObject.waitTime = ride.waitTime;
-                    rideObject.lastUpdate = moment(ride.lastUpdate).format();
+                    rideObject.lastUpdate = moment(ride.lastUpdate).format();                    
                     rideObject.status = ride.status;
                     rideObject.active = ride.active;
                     rideObject.parkName = parkObject.Name;
@@ -87,6 +74,7 @@ function getWaitTimesparkObject(parkObject) {
 
                     if (ride.schedule != undefined) {
                         rideObject.schedule = ride.schedule;
+                        rideObject.schedule.date = moment(rideObject.schedule.date).tz(parkObject.Timezone).format()
                     } else {
                         rideObject.schedule = null
                     }

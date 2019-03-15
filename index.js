@@ -1,14 +1,8 @@
 var express = require('express');
 var app = express()
 var port = process.env.PORT || 3000;
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-//connect to database
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/disneyRideTimes',{
-    useNewUrlParser: true
-}); 
 
 //body parsing
 app.use(bodyParser.urlencoded({ extended: true }));

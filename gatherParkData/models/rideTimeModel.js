@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-
 var RideTimeSchema = new Schema({
     name: String,
     waitTime: Number,
     lastUpdate: Date,
     status: String,
-    active: Bool,
+    active: Boolean,
     parkName: String,
     schedule: new Schema({
         date: Date,
@@ -20,16 +18,9 @@ var RideTimeSchema = new Schema({
     })
 });
 
-module.exports = mongoose.model('rideTime', RideTimeSchema);
+var test = new Schema({
+    name: String,
+});
 
-
-/*{
-  name: {
-    type: String,
-    required: 'Kindly enter the name of the task'
-  },
-  Created_date: {
-    type: Date,
-    default: Date.now
-  }
-}*/
+mongoose.model('rideTimeModel', RideTimeSchema);
+mongoose.model('test', test);
