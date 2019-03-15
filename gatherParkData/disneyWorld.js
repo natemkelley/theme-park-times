@@ -1,12 +1,13 @@
 var colors = require('colors');
 var Themeparks = require("themeparks");
 var moment = require("moment")
+var FIFTEENMINUTES = 1000 * 60 * 15;
+
+//parks
 var disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
 var disneyAnimalKingdom = new Themeparks.Parks.WaltDisneyWorldAnimalKingdom();
 var disneyEpcot = new Themeparks.Parks.WaltDisneyWorldEpcot();
 var disneyHollywoodStudios = new Themeparks.Parks.WaltDisneyWorldHollywoodStudios();
-var fifteenMinutes = 1000 * 60 * 15;
-
 
 //create array
 var parksArray = [];
@@ -19,7 +20,11 @@ parksArray.push(disneyHollywoodStudios)
 parksArray.forEach(function (parkObject) {
     getParkTimes(parkObject).then((parkTimesObject) => {
         console.log(parkTimesObject);
-        getWaitTimesparkObject(parkObject);
+        getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
+            parkRidesArray.forEach(function (ride) {
+                console.log(ride)
+            })
+        });
     })
 });
 
@@ -52,13 +57,28 @@ function getParkTimes(parkObject) {
 }
 
 function getWaitTimesparkObject(parkObject) {
+    var returnArray = [];
+
     return new Promise((resolve, reject) => {
         parkObject.GetWaitTimes().then(function (rides) {
             for (var i = 0, ride; ride = rides[i++];) {
+                var rideObject = {};
                 if (true) {
-                    console.log(ride.name);
+                    rideObject.name = ride.name;
+                    rideObject.waitTime = ride.waitTime;
+                    rideObject.lastUpdate = ride.lastUpdate;
+                    rideObject.status = ride.status;
+                    rideObject.active = ride.active;
+
+                    if (parkObject.SupportsRideSchedules) {
+                        rideObject.schedule = ride.schedule;
+                    }
+
+                    returnArray.push(rideObject)
                 }
             }
+
+            resolve(returnArray);
         }, console.error);
 
     })
