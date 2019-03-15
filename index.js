@@ -2,7 +2,6 @@ var express = require('express');
 var app = express()
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
-var rideTime = require('./api/models/rideTimeModel')
 var bodyParser = require('body-parser');
 
 //connect to database
@@ -15,10 +14,6 @@ mongoose.connect('mongodb://localhost/disneyRideTimes',{
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-//routes
-var routes = require('./api/routes/rideTimeRoutes'); 
-routes(app);
 
 //start server
 app.listen(port);
