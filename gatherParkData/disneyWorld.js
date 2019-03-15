@@ -3,6 +3,20 @@ var Themeparks = require("themeparks");
 var moment = require("moment");
 var FIFTEENMINUTES = 1000 * 60 * 15;
 
+
+const fs = require('fs');
+
+fs.readdir('./gatherParkData/controllers/', (err, files) => {
+  files.forEach(file => {
+    console.log('./gatherParkData/controllers/'+file);
+  });
+});
+require('./gatherParkData/controllers/disneyParkTimesController.js')
+
+
+
+
+
 //parks
 var disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
 var disneyAnimalKingdom = new Themeparks.Parks.WaltDisneyWorldAnimalKingdom();
@@ -20,10 +34,10 @@ parksArray.push(disneyHollywoodStudios)
 parksArray.forEach(function (parkObject) {
     getParkTimes(parkObject).then((parkTimesObject) => {
         if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
-            console.log(parkTimesObject);
+            //console.log(parkTimesObject);
             getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
                 parkRidesArray.forEach(function (ride) {
-                    console.log(ride)
+                    //console.log(ride)
                 })
             });
         }
