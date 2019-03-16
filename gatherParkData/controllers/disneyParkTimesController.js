@@ -49,7 +49,6 @@ function removeAll() {
         }
     });
 }
-removeAll();
 /*exports.saveTwitterSimulation = function (twitterSimulationData, user, nameOfSim, private, groups) {
     return new Promise((resolve, reject) => {
         var saveThisTwitterSimulation = new twitterSimulationModel({
