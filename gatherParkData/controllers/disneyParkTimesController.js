@@ -49,19 +49,19 @@ exports.saveRide = function (ride) {
                     resolve(true);
                     return
                 }
-            
+
                 if (moment(fifteenMinutesAgo).isAfter(docs[0].lastUpdate, 'minute')) {
                     JustSaveItAlready(saveThisRide, docs);
                     resolve(true)
                 } else {
-                    console.log(colors.cyan(saveThisRide.name + ' ---> timestamp already exists'))
-                } 
+                    console.log(colors.cyan(saveThisRide.parkName + " ---> " + saveThisRide.name + ' ---> timestamp already exists'))
+                }
 
                 function JustSaveItAlready(saveThisRide, docs) {
                     return new Promise((resolve, reject) => {
                         saveThisRide.save(function (err) {
                             if (err) reject(false);
-                            console.log(colors.green(ride.name + " with a wait time of ") + colors.underline.white(ride.waitTime));
+                            console.log(colors.green(saveThisRide.parkName + "---> " + ride.name + " with a wait time of ") + colors.underline.white(ride.waitTime));
                             resolve(true)
                         })
                     })
