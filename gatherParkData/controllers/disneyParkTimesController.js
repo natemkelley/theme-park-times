@@ -35,7 +35,7 @@ exports.saveRide = function (ride) {
         
         saveThisRide.save(function (err) {
             if (err) reject(false);
-            console.log(colors.green(ride.name + "with a wait time of ") + colors.underline.white(ride.waitTime));
+            console.log(colors.green(ride.name + " with a wait time of ") + colors.underline.white(ride.waitTime));
             resolve(true)
         });
     })

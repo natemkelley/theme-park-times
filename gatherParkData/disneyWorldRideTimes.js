@@ -6,18 +6,26 @@ var FIFTEENMINUTES = 1000 * 60 * 15;
 
 
 module.exports = function (parksArray) {
-    //loop and save ride times
-    parksArray.forEach(function (parkObject) {
-        getParkTimes(parkObject).then((parkTimesObject) => {
-            if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
-                getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
-                    parkRidesArray.forEach(function (ride) {
-                        disneyParkController.saveRide(ride);
-                    })
-                });
-            }
-        })
-    });
+    setInterval(function () {
+        loopForWaitTimes();
+    }, FIFTEENMINUTES);
+
+
+    loopForWaitTimes();
+
+    function loopForWaitTimes() {
+        parksArray.forEach(function (parkObject) {
+            getParkTimes(parkObject).then((parkTimesObject) => {
+                if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
+                    getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
+                        parkRidesArray.forEach(function (ride) {
+                            disneyParkController.saveRide(ride);
+                        })
+                    });
+                }
+            })
+        });
+    }
 
     function getParkTimes(parkObject) {
         var returnJSON = {};
@@ -76,5 +84,4 @@ module.exports = function (parksArray) {
         })
 
     }
-
 }

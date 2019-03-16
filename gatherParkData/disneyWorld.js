@@ -23,10 +23,10 @@ parksArray.push(disneyHollywoodStudios)
 
 
 //start collecting ride times
-//require('./disneyWorldRideTimes')(parksArray);
+require('./disneyWorldRideTimes')(parksArray);
 
 
 //start collecting park information
 var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios']
-//require('./disneyWorldRideInfo')(parksArrayForAttractions);
+require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
