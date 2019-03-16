@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
 var colors = require('colors');
 
 //connect to database
@@ -16,9 +17,6 @@ require('../controllers/disneyParkTimesController');
 var rideTimeModel = mongoose.model('rideTimeModel');
 
 
-
-
-
 exports.saveRide = function (ride) {
     return new Promise((resolve, reject) => {
 
@@ -32,14 +30,47 @@ exports.saveRide = function (ride) {
             parkName: ride.parkName,
             schedule: ride.schedule
         });
-        
-        saveThisRide.save(function (err) {
-            if (err) reject(false);
-            console.log(colors.green(ride.name + " with a wait time of ") + colors.underline.white(ride.waitTime));
-            resolve(true)
-        });
+
+
+        rideTimeModel
+            .find({
+                id: saveThisRide.id
+            })
+            .sort({
+                lastUpdate: -1
+            })
+            .limit(1)
+            .then(docs => {
+                const PARSE_FORMAT = 'M/D/YYYY, H:mm:ss A';
+                const fifteenMinutesAgo = moment(saveThisRide.lastUpdate).subtract(15, 'minutes')
+
+                if (docs.length == 0 || docs == undefined) {
+                    JustSaveItAlready(saveThisRide, docs);
+                    resolve(true);
+                    return
+                }
+            
+                if (moment(fifteenMinutesAgo).isAfter(docs[0].lastUpdate, 'minute')) {
+                    JustSaveItAlready(saveThisRide, docs);
+                    resolve(true)
+                } else {
+                    console.log(colors.cyan(saveThisRide.name + ' ---> timestamp already exists'))
+                } 
+
+                function JustSaveItAlready(saveThisRide, docs) {
+                    return new Promise((resolve, reject) => {
+                        saveThisRide.save(function (err) {
+                            if (err) reject(false);
+                            console.log(colors.green(ride.name + " with a wait time of ") + colors.underline.white(ride.waitTime));
+                            resolve(true)
+                        })
+                    })
+                }
+
+            });
     })
 }
+
 
 function removeAll() {
     var removeAll = rideTimeModel.deleteMany({});
@@ -49,36 +80,3 @@ function removeAll() {
         }
     });
 }
-/*exports.saveTwitterSimulation = function (twitterSimulationData, user, nameOfSim, private, groups) {
-    return new Promise((resolve, reject) => {
-        var saveThisTwitterSimulation = new twitterSimulationModel({
-            date: new Date(),
-            user: user,
-            nameOfSim: nameOfSim,
-            type: 'twitter',
-            groups: groups,
-            private: private,
-            views: 0,
-            simulation: twitterSimulationData
-        });
-        saveThisTwitterSimulation.save(function (err) {
-            if (err) return handleError(err);
-            console.log('saved tweet saved successfully'.green);
-
-            var returnVal = {
-                status: true
-            };
-            resolve(returnVal)
-        });
-
-    })
-}*/
-
-
-exports.list_all_tasks = function (req, res) {
-    rideTime.find({}, function (err, task) {
-        if (err)
-            res.send(err);
-        res.json(task);
-    });
-};

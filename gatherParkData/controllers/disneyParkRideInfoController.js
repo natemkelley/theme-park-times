@@ -14,7 +14,7 @@ exports.saveRideInformation = function (rideInfo) {
             name: saveThisRide.name
         }, function (err, docs) {
             if (docs.length) {
-                console.log('already exists'.cyan);
+                //console.log('already exists'.cyan);
             } else {
                 saveThisRide.save(function (err) {
                     if (err) reject(false);
