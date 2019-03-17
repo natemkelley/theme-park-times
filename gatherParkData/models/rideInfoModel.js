@@ -7,4 +7,4 @@ var rideInfoScheme = new Schema({
     strict: false
 });
 
-mongoose.model('rideInfoModel', rideInfoScheme);
+mongoose.model('rideInfo', rideInfoScheme);

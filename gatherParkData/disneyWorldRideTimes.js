@@ -19,7 +19,7 @@ module.exports = function (parksArray) {
                 if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
                     getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
                         parkRidesArray.forEach(function (ride) {
-                            disneyParkController.saveRide(ride);
+                            disneyParkController.saveRideTime(ride);
                         })
                     });
                 }
@@ -65,7 +65,7 @@ module.exports = function (parksArray) {
                         rideObject.active = ride.active;
                         rideObject.parkName = parkObject.Name;
                         rideObject.id = ride.id;
-                        rideObject.date = moment(parkObject.DateNow()).tz(parkObject.Timezone).format('LL');
+                        rideObject.date = moment(parkObject.DateNow()).tz(parkObject.Timezone).format();
 
                         if (ride.schedule != undefined) {
                             rideObject.schedule = ride.schedule;

@@ -32,5 +32,5 @@ require('./disneyWorldRideTimes')(parksArray);
 
 //start collecting park information
 var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios','disneyland','disney-california-adventure']
-require('./disneyWorldRideInfo')(parksArrayForAttractions);
+//require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
