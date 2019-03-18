@@ -1,31 +1,33 @@
 //looking for a unique day
 [
-    {
-        '$match': {
-            'name': {
-                '$regex': 'Haunt'
-            }
-        }
+  {
+    '$match': {
+      'name': {
+        '$regex': 'Haunt'
+      }
+    }
   }, {
-        '$group': {
-            '_id': {
-                'month': {
-                    '$month': '$lastUpdate'
-                },
-                'day': {
-                    '$dayOfMonth': '$lastUpdate'
-                },
-                'year': {
-                    '$year': '$lastUpdate'
-                },
-                'hour': {
-                    '$hour': '$lastUpdate'
-                }
-            },
-            'average': {
-                '$avg': '$waitTime'
-            }
-        }
+    '$group': {
+      '_id': {
+        'month': {
+          '$month': '$lastUpdate'
+        }, 
+        'day': {
+          '$dayOfMonth': '$lastUpdate'
+        }, 
+        'year': {
+          '$year': '$lastUpdate'
+        }, 
+        'hour': {
+          '$hour': '$lastUpdate'
+        }, 
+        'name': '$name', 
+        'parkName': '$parkName'
+      }, 
+      'average': {
+        '$avg': '$waitTime'
+      }
+    }
   }
 ]
 
