@@ -2,6 +2,15 @@ var express = require('express');
 var app = express()
 var port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+//connect to database
+mongoose.connect('mongodb://localhost/disneyRideTimes', {
+    useNewUrlParser: true
+});
+mongoose.connection.on('connected', function () {
+    console.log('Mongoose default connection open'.green);
+});
 
 
 //body parsing

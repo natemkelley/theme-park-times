@@ -5,7 +5,6 @@ var disneyRideController = require('../gatherParkData/controllers/disneyParkRide
 
 module.exports = function (parksArrayForAttractions) {
 
-
     setTimeout(function () {
         getRideInfo();
     }, 5000);

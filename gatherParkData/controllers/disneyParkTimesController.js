@@ -2,19 +2,10 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var colors = require('colors');
 
-//connect to database
-mongoose.connect('mongodb://localhost/disneyRideTimes', {
-    useNewUrlParser: true
-});
-mongoose.connection.on('connected', function () {
-    console.log('Mongoose default connection open'.green);
-});
-
 
 //rideTime Schema
 require('../models/rideTimeModel')
 const rideTimeDay = mongoose.model('rideTimes');
-
 
 exports.saveRideTime = function (ride) {
     return new Promise((resolve, reject) => {
@@ -63,26 +54,18 @@ exports.saveRideTime = function (ride) {
                 }, {
                     rideStatus: {
                         $slice: -1
-                    },
-                    schedule: 0,
-                    name: 0,
-                    parkName: 0,
-                    date: 0,
-                    id: 0,
-                    _id: 0
+                    }
                 })
                 .then(docs => {
-                    const PARSE_FORMAT = 'M/D/YYYY, H:mm:ss A';
-                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(8,"minutes");
+                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(8, "minutes");
                     var timeInDB = docs.rideStatus[0].lastUpdate;
-                    console.log(moment(tenMinutesAgo).format('llll'));
-                    console.log(colors.yellow(moment(timeInDB).format('llll')))
 
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
-                        console.log('not duplicate data')
-                        //resolve(false)
+                        console.log("\nten minutes ago "+ moment(tenMinutesAgo).format('llll'));
+                        console.log("time in db "+colors.yellow(moment(timeInDB).format('llll')))
+                        resolve(false);
                     } else {
-                        //resolve(true)
+                        resolve(true);
                     }
                 });
         })
@@ -94,7 +77,8 @@ exports.saveRideTime = function (ride) {
             rideTimeDay
                 .findOne({
                     name: ride.name,
-                    date: ride.date
+                    date: ride.date,
+                    parkName: ride.parkName
                 })
                 .then(docs => {
                     if (docs) {
@@ -123,11 +107,11 @@ exports.saveRideTime = function (ride) {
 
                     updateRideStatus.save(function (err, data) {
                         if (err) {
-                            console.log(colors.yellow(updateRideStatus.name + " " + updateRideStatus._id));
-                            console.log(colors.red(err))
+                            console.log(colors.red(updateRideStatus.name + " " + updateRideStatus._id));
+                            console.log(colors.red(err));
                             reject(false);
                         }
-                        console.log(colors.cyan(updateRideStatus.parkName + "---> " + updateRideStatus.name + " with a wait time of ") + colors.underline.white(newStatus.waitTime));
+                        console.log(colors.cyan(updateRideStatus.parkName + " -> " + updateRideStatus.name + " -> wait time of ") + colors.underline.white(newStatus.waitTime));
                         resolve(true)
                     })
                 })
@@ -165,86 +149,3 @@ function removeAll() {
 }
 
 //removeAll();
-
-
-
-
-
-/*exports.saveRide = function (ride) {
-    return new Promise((resolve, reject) => {
-
-        var saveThisRide = new rideTime({
-            id: ride.id,
-            name: ride.name,
-            waitTime: ride.waitTime,
-            lastUpdate: ride.lastUpdate,
-            status: ride.status,
-            active: ride.active,
-            parkName: ride.parkName,
-            schedule: ride.schedule
-        });
-
-        rideTime
-            .find({
-                id: saveThisRide.id
-            })
-            .sort({
-                lastUpdate: -1
-            })
-            .limit(1)
-            .then(docs => {
-                const PARSE_FORMAT = 'M/D/YYYY, H:mm:ss A';
-                const fifteenMinutesAgo = moment(saveThisRide.lastUpdate).subtract(15, 'minutes')
-
-                if (docs.length == 0 || docs == undefined) {
-                    JustSaveItAlready(saveThisRide, docs);
-                    resolve(true);
-                    return
-                }
-
-                if (moment(fifteenMinutesAgo).isAfter(docs[0].lastUpdate, 'minute')) {
-                    JustSaveItAlready(saveThisRide, docs);
-                    resolve(true)
-                } else {
-                    console.log(colors.cyan(saveThisRide.parkName + " ---> " + saveThisRide.name + ' ---> timestamp already exists'))
-                }
-
-                function JustSaveItAlready(saveThisRide, docs) {
-                    return new Promise((resolve, reject) => {
-                        saveThisRide.save(function (err) {
-                            if (err) reject(false);
-                            console.log(colors.green(saveThisRide.parkName + "---> " + ride.name + " with a wait time of ") + colors.underline.white(ride.waitTime));
-                            resolve(true)
-                        })
-                    })
-                }
-
-            });
-    })
-
-    function createRideStatusInDatabase(docDateID, ride) {
-        return new Promise((resolve, reject) => {
-            var newStatus = {
-                status: ride.status,
-                waitTime: ride.waitTime,
-                lastUpdate: ride.lastUpdate
-            }
-
-            rideTimeMinified
-                .findOne({
-                    'days._id': docDateID,
-                })
-                .then(docs => {
-                    var updateRideTime = rideTimeMinified(docs);
-                    if (updateRideTime) {
-                        var daysLength = updateRideTime.days.length;
-                        updateRideTime.days[daysLength - 1].rideStatus.push(newStatus);
-                        updateRideTime.save(function (err, data) {
-                            if (err) reject(false);
-                            console.log(colors.green(updateRideTime.parkName + "---> " + updateRideTime.name + " with a wait time of ") + colors.underline.white(newStatus.waitTime));
-                        })
-                    }
-                })
-        })
-    }
-}*/

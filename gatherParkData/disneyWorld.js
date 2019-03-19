@@ -5,8 +5,6 @@ var request = require("request")
 var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
 var disneyRideController = require('../gatherParkData/controllers/disneyParkRideInfoController.js')
 
-var FIFTEENMINUTES = 1000 * 60 * 15;
-
 
 //parks
 var disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
