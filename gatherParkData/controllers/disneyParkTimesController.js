@@ -25,11 +25,17 @@ exports.saveRideTime = function (ride) {
             })
             .then(rideID => {
                 return new Promise((resolve, reject) => {
-                    isThisGonnaBeDuplicateData(rideID).then(status => {
+                    if (!rideID) {
+                        resolve(rideID);
+                        return
+                    }
+
+                    isThisGonnaBeDuplicateData(rideID, ride).then(status => {
                         if (!status) {
-                            resolve(rideID)
+                            resolve(rideID);
                         } else {
-                            resolve(true)
+                            console.log(colors.red('duplicate timestamp -> ' + ride.name))
+                            return
                         }
                     })
                 })
@@ -49,28 +55,48 @@ exports.saveRideTime = function (ride) {
             })
     })
 
-    function isThisGonnaBeDuplicateData(dayAndRideID) {
+    function isThisGonnaBeDuplicateData(dayAndRideID, ride) {
         return new Promise((resolve, reject) => {
-            if (dayAndRideID) {
-                resolve(false)
+            rideTimeDay
+                .findOne({
+                    _id: dayAndRideID
+                }, {
+                    rideStatus: {
+                        $slice: 1
+                    },
+                    schedule: 0,
+                    name: 0,
+                    parkName: 0,
+                    date: 0,
+                    id: 0,
+                    _id: 0
+                })
+                .then(docs => {
+                    const PARSE_FORMAT = 'M/D/YYYY, H:mm:ss A';
+                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(9,"minutes");
+                    var timeInDB = docs.rideStatus[0].lastUpdate;
+                    //console.log(moment(tenMinutesAgo).format('llll'));
+                    //console.log(colors.yellow(moment(timeInDB).format('llll')))
 
-            } else {
-                resolve(true)
-            }
+                    if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
+                        resolve(false)
+                    } else {
+                        resolve(true)
+                    }
+                });
         })
     }
 
     function getRideDayInDatabase(ride) {
         return new Promise((resolve, reject) => {
             var returnStatus = false;
-
             rideTimeDay
                 .findOne({
                     name: ride.name,
                     date: ride.date
                 })
                 .then(docs => {
-                    if (docs._id && docs.name && docs.date) {
+                    if (docs) {
                         returnStatus = docs._id
                     }
                     resolve(returnStatus)
@@ -127,6 +153,19 @@ exports.saveRideTime = function (ride) {
     }
 
 }
+
+function removeAll() {
+    var removeAll = rideTimeDay.deleteMany({});
+    removeAll.then(function (log, err) {
+        if (log) {
+            console.log('deleting all tweets status '.red + JSON.stringify(log).red);
+        }
+    });
+}
+
+//removeAll();
+
+
 
 
 
@@ -208,14 +247,3 @@ exports.saveRideTime = function (ride) {
         })
     }
 }*/
-
-function removeAll() {
-    var removeAll = rideTimeDay.deleteMany({});
-    removeAll.then(function (log, err) {
-        if (log) {
-            console.log('deleting all tweets status '.red + JSON.stringify(log).red);
-        }
-    });
-}
-
-//removeAll();

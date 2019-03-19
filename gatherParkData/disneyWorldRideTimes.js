@@ -1,14 +1,12 @@
 var colors = require('colors');
 var moment = require("moment");
 var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
-var FIFTEENMINUTES = 1000 * 60 * 15;
-
+var TENMINUTES = 1000 * 60 * 10;
 
 module.exports = function (parksArray) {
     setInterval(function () {
-        loopForWaitTimes();
-    }, FIFTEENMINUTES);
-
+        loopForWaitTimes()
+    }, TENMINUTES);
 
     loopForWaitTimes();
 
