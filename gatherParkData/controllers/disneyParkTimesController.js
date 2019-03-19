@@ -34,7 +34,7 @@ exports.saveRideTime = function (ride) {
                         if (!status) {
                             resolve(rideID);
                         } else {
-                            console.log(colors.red('duplicate timestamp -> ' + ride.name))
+                            console.log(colors.red('dup timestamp -> ' + ride.name + ' -> ' + ride.parkName))
                             return
                         }
                     })
@@ -62,7 +62,7 @@ exports.saveRideTime = function (ride) {
                     _id: dayAndRideID
                 }, {
                     rideStatus: {
-                        $slice: 1
+                        $slice: -1
                     },
                     schedule: 0,
                     name: 0,
@@ -73,15 +73,16 @@ exports.saveRideTime = function (ride) {
                 })
                 .then(docs => {
                     const PARSE_FORMAT = 'M/D/YYYY, H:mm:ss A';
-                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(9,"minutes");
+                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(8,"minutes");
                     var timeInDB = docs.rideStatus[0].lastUpdate;
-                    //console.log(moment(tenMinutesAgo).format('llll'));
-                    //console.log(colors.yellow(moment(timeInDB).format('llll')))
+                    console.log(moment(tenMinutesAgo).format('llll'));
+                    console.log(colors.yellow(moment(timeInDB).format('llll')))
 
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
-                        resolve(false)
+                        console.log('not duplicate data')
+                        //resolve(false)
                     } else {
-                        resolve(true)
+                        //resolve(true)
                     }
                 });
         })
