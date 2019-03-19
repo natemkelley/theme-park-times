@@ -13,21 +13,72 @@ mongoose.connection.on('connected', function () {
 
 //rideTime Schema
 require('../models/rideTimeModel')
-const rideTime = mongoose.model('rideTime');
-const rideTimeMinified = mongoose.model('rideTimeMinified');
-const rideTimeDay = mongoose.model('rideTimeDay');
+const rideTimeDay = mongoose.model('rideTimes');
 
 
 exports.saveRideTime = function (ride) {
     return new Promise((resolve, reject) => {
-        createRideInDatabase(ride).then(createdRideID => {
-            createRideDayInDatabase(createdRideID, ride).then(createdDayID => {
-                createRideStatusInDatabase(createdDayID, ride);
+
+        getRideDayInDatabase(ride)
+            .then(rideID => {
+                return rideID
             })
-        })
+            .then(rideID => {
+                return new Promise((resolve, reject) => {
+                    isThisGonnaBeDuplicateData(rideID).then(status => {
+                        if (!status) {
+                            resolve(rideID)
+                        } else {
+                            resolve(true)
+                        }
+                    })
+                })
+            })
+            .then(rideID => {
+                if (rideID) {
+                    createStatus(rideID, ride).then(saveStatus => {
+                        resolve(saveStatus)
+                    })
+                } else {
+                    createRideAndDay(ride).then(dayAndRideID => {
+                        createStatus(dayAndRideID, ride).then(saveStatus => {
+                            resolve(saveStatus)
+                        })
+                    })
+                }
+            })
     })
 
-    function createRideStatusInDatabase(docDateID, ride) {
+    function isThisGonnaBeDuplicateData(dayAndRideID) {
+        return new Promise((resolve, reject) => {
+            if (dayAndRideID) {
+                resolve(false)
+
+            } else {
+                resolve(true)
+            }
+        })
+    }
+
+    function getRideDayInDatabase(ride) {
+        return new Promise((resolve, reject) => {
+            var returnStatus = false;
+
+            rideTimeDay
+                .findOne({
+                    name: ride.name,
+                    date: ride.date
+                })
+                .then(docs => {
+                    if (docs._id && docs.name && docs.date) {
+                        returnStatus = docs._id
+                    }
+                    resolve(returnStatus)
+                })
+        })
+    }
+
+    function createStatus(dayAndRideID, ride) {
         return new Promise((resolve, reject) => {
             var newStatus = {
                 status: ride.status,
@@ -35,62 +86,46 @@ exports.saveRideTime = function (ride) {
                 lastUpdate: ride.lastUpdate
             }
 
-            rideTimeMinified
+            rideTimeDay
                 .findOne({
-                    'days._id': docDateID,
+                    _id: dayAndRideID
                 })
                 .then(docs => {
-                    var updateRideTime = rideTimeMinified(docs);
-                    if (updateRideTime) {
-                        var daysLength = updateRideTime.days.length;
-                        updateRideTime.days[daysLength - 1].rideStatus.push(newStatus);
-                        updateRideTime.save(function (err, data) {
-                            if (err) reject(false);
-                            console.log(colors.green(updateRideTime.parkName + "---> " + updateRideTime.name + " with a wait time of ") + colors.underline.white(newStatus.waitTime));
-                        })
-                    }
-                })
-        })
-    }
+                    var updateRideStatus = rideTimeDay(docs);
+                    updateRideStatus.rideStatus.push(newStatus);
 
-    function createRideDayInDatabase(docRideID, ride) {
-        return new Promise((resolve, reject) => {
-            var newDay = {
-                schedule: ride.schedule,
-                rideStatus: [],
-                date: ride.date
-            }
-
-            rideTimeMinified
-                .findOne({
-                    _id: docRideID
-                })
-                .then(docs => {
-                    var updateRideDay = rideTimeMinified(docs);
-                    updateRideDay.days.push(newDay);
-                    updateRideDay.save(function(err, data){
-                        resolve(data.days[data.days.length - 1]._id)
+                    updateRideStatus.save(function (err, data) {
+                        if (err) {
+                            console.log(colors.yellow(updateRideStatus.name + " " + updateRideStatus._id));
+                            console.log(colors.red(err))
+                            reject(false);
+                        }
+                        console.log(colors.cyan(updateRideStatus.parkName + "---> " + updateRideStatus.name + " with a wait time of ") + colors.underline.white(newStatus.waitTime));
+                        resolve(true)
                     })
                 })
         })
     }
 
-    function createRideInDatabase(ride) {
+    function createRideAndDay(ride) {
         return new Promise((resolve, reject) => {
-            var createThisRide = new rideTimeMinified({
+            var createThisRide = new rideTimeDay({
                 id: ride.id,
                 name: ride.name,
                 parkName: ride.parkName,
-                days: [],
+                date: ride.date,
+                schedule: ride.schedule,
+                rideStatus: [],
             });
 
             createThisRide.save(function (err, data) {
                 if (err) reject(false);
-                console.log(colors.green("Created ---> " + ride.parkName + "---> " + ride.name));
+                //console.log(colors.green("Created -> " + ride.parkName + "-> " + ride.name) + colors.white(" -> " + ride.date));
                 resolve(data._id);
             })
         })
     }
+
 }
 
 
@@ -146,10 +181,36 @@ exports.saveRideTime = function (ride) {
 
             });
     })
+
+    function createRideStatusInDatabase(docDateID, ride) {
+        return new Promise((resolve, reject) => {
+            var newStatus = {
+                status: ride.status,
+                waitTime: ride.waitTime,
+                lastUpdate: ride.lastUpdate
+            }
+
+            rideTimeMinified
+                .findOne({
+                    'days._id': docDateID,
+                })
+                .then(docs => {
+                    var updateRideTime = rideTimeMinified(docs);
+                    if (updateRideTime) {
+                        var daysLength = updateRideTime.days.length;
+                        updateRideTime.days[daysLength - 1].rideStatus.push(newStatus);
+                        updateRideTime.save(function (err, data) {
+                            if (err) reject(false);
+                            console.log(colors.green(updateRideTime.parkName + "---> " + updateRideTime.name + " with a wait time of ") + colors.underline.white(newStatus.waitTime));
+                        })
+                    }
+                })
+        })
+    }
 }*/
 
 function removeAll() {
-    var removeAll = rideTimeMinified.deleteMany({});
+    var removeAll = rideTimeDay.deleteMany({});
     removeAll.then(function (log, err) {
         if (log) {
             console.log('deleting all tweets status '.red + JSON.stringify(log).red);
@@ -157,4 +218,4 @@ function removeAll() {
     });
 }
 
-removeAll();
+//removeAll();
