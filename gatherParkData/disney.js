@@ -17,12 +17,11 @@ parksArray.push(disneyHollywoodStudios)
 parksArray.push(disneyLand)
 parksArray.push(disneyCaliforniaAdventure)
 
-
 //start collecting ride times
-//require('./disneyWorldRideTimes')(parksArray);
+require('./disneyWorldRideTimes')(parksArray);
 
 
 //start collecting park information
-var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios','disneyland','disney-california-adventure']
+var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios','disneyland','disney-california-adventure'];
 require('./disneyWorldRideInfo')(parksArrayForAttractions);
 

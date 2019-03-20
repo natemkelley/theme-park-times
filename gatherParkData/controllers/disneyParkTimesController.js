@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var colors = require('colors');
 
-
 //rideTime Schema
 require('../models/rideTimeModel')
 const rideTimeDay = mongoose.model('rideTimes');

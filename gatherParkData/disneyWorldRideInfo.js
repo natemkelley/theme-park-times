@@ -25,7 +25,10 @@ module.exports = function (parksArrayForAttractions) {
                             })
                             .then(rideJSON => {
                                 return new Promise((resolve, reject) => {
-                                    getRideTimeID(rideJSON, park)
+                                    getRideTimeID(rideJSON, park).then(rideID =>{
+                                        rideJSON.id = rideID;
+                                        disneyRideController.saveRideInformation(rideJSON)
+                                    })
                                 })
 
                             })
@@ -35,7 +38,7 @@ module.exports = function (parksArrayForAttractions) {
         })
     }
 
-    //disneyRideController.saveRideInformation(rideJSON)
+    //
 
 
     function getRideData(ride, park) {
@@ -58,33 +61,34 @@ module.exports = function (parksArrayForAttractions) {
     }
 
     function getRideTimeID(rideJSON, park) {
-        //console.log(ride);
-        var returnPark = null;
+        return new Promise((resolve, reject) => {
+            var returnPark = null;
 
-        switch (park) {
-            case 'magic-kindgom':
-                returnPark = 'Magic Kingdom - Walt Disney World Florida';
-                break;
-            case 'disney-california-adventure':
-                returnPark = 'California Adventure - Disneyland Resort';
-                break;
-            case 'epcot':
-                returnPark = 'Epcot - Walt Disney World Florida';
-                break;
-            case 'animal-kingdom':
-                returnPark = 'Animal Kingdom - Walt Disney World Florida';
-                break;
-            case 'hollywood-studios':
-                returnPark = 'Hollywood Studios - Walt Disney World Florida';
-                break;
-            default:
-                returnPark = 'Magic Kingdom - Disneyland Resort';
-        }
+            switch (park) {
+                case 'magic-kingdom':
+                    returnPark = 'Magic Kingdom - Walt Disney World Florida';
+                    break;
+                case 'disney-california-adventure':
+                    returnPark = 'California Adventure - Disneyland Resort';
+                    break;
+                case 'epcot':
+                    returnPark = 'Epcot - Walt Disney World Florida';
+                    break;
+                case 'animal-kingdom':
+                    returnPark = 'Animal Kingdom - Walt Disney World Florida';
+                    break;
+                case 'hollywood-studios':
+                    returnPark = 'Hollywood Studios - Walt Disney World Florida';
+                    break;
+                case 'disneyland':
+                    returnPark = 'Magic Kingdom - Disneyland Resort';
+            }
 
 
-        disneyRideController.getRideIDByPark(rideJSON.name, returnPark);
-
+            disneyRideController.getRideIDByPark(rideJSON.name, returnPark, park)
+                .then(status => {
+                    resolve(status);
+                })
+        })
     }
 }
-
-//

@@ -18,11 +18,11 @@ exports.saveRideInformation = function (rideInformation) {
             name: saveThisRide.name
         }, function (err, docs) {
             if (docs.length) {
-                console.log('info already exists'.rainbow);
+                //console.log('info already exists'.white);
             } else {
                 saveThisRide.save(function (err) {
                     if (err) reject(false);
-                    console.log(colors.green(rideInformation.name));
+                    console.log(colors.green("Info created "+rideInformation.name) +" -> "+rideInformation.id);
                     resolve(true)
                 });
             }
@@ -31,37 +31,72 @@ exports.saveRideInformation = function (rideInformation) {
 }
 
 exports.getRideIDByPark = function (rideName, park) {
-    //rideName = /.*Pirate.*/
-    //var newrideName = new RegExp(".*" + rideName + ".*");
-    var newrideName = new RegExp(".*" + rideName.substring(0, 16) + ".*");
+    return new Promise((resolve, reject) => {
+        rideName = specialCases(rideName)
 
-    rideTimeDay
-        .find({
-            name: {
-                $regex: newrideName
-            },
-            parkName: park
-        })
-        .then(docs => {
-        
-            console.log(colors.white(newrideName))
-            if (docs.length > 1) {
-                console.log(colors.cyan(rideName.substring(0, (rideName.length - 3)) + "->" + park));
-                docs.forEach(function (data) {
-                    console.log(colors.yellow(data.name + "->" + park));
-                })
+        var newrideName = new RegExp(".*" + rideName.substring(0, 16) + ".*");
+
+        rideTimeDay
+            .find({
+                name: {
+                    $regex: newrideName,
+                    '$options': 'i'
+                },
+                parkName: park
+            })
+            .then(docs => {
+
+                if (docs.length > 1) {
+                    resolve(docs[docs.length - 1].id);
+                }
+
+                if (docs.length == 0) {
+                    resolve(false);
+                }
+
+                if (docs.length == 1) {
+                    resolve(docs[0].id)
+                }
+
+            })
+
+    })
+
+
+
+
+    function specialCases(rideName) {
+        if (rideName.substr(0, 1) == "T") {
+            if (rideName.includes('The')) {
+                rideName = rideName.replace('The ', '');
             }
+        }
 
-            if (docs.length==0) {
-                console.log(colors.red(rideName + "->" + park));
-            }
-        
-            if(docs.length == 1){
-                console.log(colors.green(rideName + "->" + park));
-            }
+        if (rideName.includes('Walt Disney World')) {
+            rideName = rideName.replace('Walt Disney World', '');
+        }
 
-            //console.log(docs)
-        })
+        if (rideName.includes('Disney & Pixar')) {
+            rideName = rideName.replace('&', 'and');
+        }
 
+        if (rideName.includes('Mission: SPACE')) {
+            rideName = 'Mission: SPACE'
+        }
+
+        if (rideName.includes('Star Tours')) {
+            rideName = rideName.replace(':', ' -');
+        }
+
+        rideName = rideName.replace('~', '-');
+
+        return rideName
+    }
+
+    function returnedValueSpecialCases(rideName) {
+        if (rideName.includes('Maharaj')) {
+
+        }
+    }
 
 }
