@@ -1,34 +1,41 @@
 var colors = require('colors');
 var moment = require("moment");
 var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
-var TENMINUTES = 1000 * 60 * 10;
+var TWOMINUTES = 1000 * 60 * 2;
 
 module.exports = function (parksArray) {
     setInterval(function () {
-        loopForWaitTimes()
-    }, TENMINUTES);
+        loopForWaitTimes(parksArray)
+    }, TWOMINUTES);
 
-    loopForWaitTimes();
+    //start the first function
+    loopForWaitTimes(parksArray);
+}
 
-    function loopForWaitTimes() {
-        parksArray.forEach(function (parkObject) {
-            getParkTimes(parkObject)
-                .then((parkTimesObject) => {
-                    if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
-                        return true
-                    }
-                })
-                .then(isParkOpen => {
-                    if (isParkOpen) {
-                        getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
-                            parkRidesArray.forEach(function (ride) {
+function loopForWaitTimes(parksArray) {
+    console.log(colors.yellow('starting the parks loop'));
+    var increment = 100;
+
+    parksArray.forEach(function (parkObject) {
+        getParkTimes(parkObject)
+            .then((parkTimesObject) => {
+                if ((parkTimesObject.currentTime > parkTimesObject.openingTime) && (parkTimesObject.currentTime < parkTimesObject.closingTime)) {
+                    return true
+                }
+            })
+            .then(isParkOpen => {
+                if (isParkOpen) {
+                    getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
+                        parkRidesArray.forEach(function (ride) {
+                            increment += 75;
+                            setTimeout(function () {
                                 disneyParkController.saveRideTime(ride);
-                            })
-                        });
-                    }
-                })
-        });
-    }
+                            }, increment);
+                        })
+                    });
+                }
+            })
+    });
 }
 
 function getParkTimes(parkObject) {
