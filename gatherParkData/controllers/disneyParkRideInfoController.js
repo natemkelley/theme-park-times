@@ -48,12 +48,14 @@ exports.getRideIDByPark = function (rideName, park) {
                 docs.forEach(function (data) {
                     console.log(colors.yellow(data.name + "->" + park));
                 })
-            } else {
-                console.log(colors.green(rideName + "->" + park));
             }
 
             if (docs.length==0) {
                 console.log(colors.red(rideName + "->" + park));
+            }
+        
+            if(docs.length == 1){
+                console.log(colors.green(rideName + "->" + park));
             }
 
             //console.log(docs)
