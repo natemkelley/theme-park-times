@@ -25,7 +25,7 @@ exports.saveRideTime = function (ride) {
                         if (!status) {
                             resolve(rideID);
                         } else {
-                            console.log(colors.red('dup timestamp -> ' + ride.name + ' -> ' + ride.parkName))
+                            //console.log(colors.red('dup timestamp -> ' + ride.name + ' -> ' + ride.parkName))
                             return
                         }
                     })
@@ -138,6 +138,7 @@ exports.saveRideTime = function (ride) {
     }
 
 }
+
 
 function removeAll() {
     var removeAll = rideTimeDay.deleteMany({});

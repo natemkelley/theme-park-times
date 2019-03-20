@@ -1,10 +1,4 @@
-var colors = require('colors');
 var Themeparks = require("themeparks");
-var moment = require("moment");
-var request = require("request")
-var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
-var disneyRideController = require('../gatherParkData/controllers/disneyParkRideInfoController.js')
-
 
 //parks
 var disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
@@ -25,10 +19,10 @@ parksArray.push(disneyCaliforniaAdventure)
 
 
 //start collecting ride times
-require('./disneyWorldRideTimes')(parksArray);
+//require('./disneyWorldRideTimes')(parksArray);
 
 
 //start collecting park information
 var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios','disneyland','disney-california-adventure']
-//require('./disneyWorldRideInfo')(parksArrayForAttractions);
+require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
