@@ -131,7 +131,7 @@ exports.saveRideTime = function (ride) {
 
             createThisRide.save(function (err, data) {
                 if (err) reject(false);
-                //console.log(colors.green("Created -> " + ride.parkName + "-> " + ride.name) + colors.white(" -> " + ride.date));
+                console.log(colors.green("Created -> " + ride.parkName + "-> " + ride.name) + colors.white(" -> " + ride.date));
                 resolve(data._id);
             })
         })

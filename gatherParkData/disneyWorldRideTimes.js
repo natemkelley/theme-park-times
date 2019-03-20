@@ -27,7 +27,7 @@ function loopForWaitTimes(parksArray) {
                 if (isParkOpen) {
                     getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
                         parkRidesArray.forEach(function (ride) {
-                            increment += 75;
+                            increment += 50;
                             setTimeout(function () {
                                 disneyParkController.saveRideTime(ride);
                             }, increment);
