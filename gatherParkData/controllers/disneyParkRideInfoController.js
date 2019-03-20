@@ -33,7 +33,7 @@ exports.saveRideInformation = function (rideInformation) {
 exports.getRideIDByPark = function (rideName, park) {
     //rideName = /.*Pirate.*/
     //var newrideName = new RegExp(".*" + rideName + ".*");
-    var newrideName = new RegExp(rideName.substring(0, (rideName.length - 3)) + ".*");
+    var newrideName = new RegExp(rideName.substring(0, (rideName.length - 3)));
 
     rideTimeDay
         .find({
