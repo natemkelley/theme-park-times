@@ -33,7 +33,7 @@ exports.saveRideInformation = function (rideInformation) {
 exports.getRideIDByPark = function (rideName, park) {
     //rideName = /.*Pirate.*/
     //var newrideName = new RegExp(".*" + rideName + ".*");
-    var newrideName = new RegExp(".*" + rideName.substring(0, (rideName.length - 3)) + ".*");
+    var newrideName = new RegExp(".*" + rideName.substring(0, 16) + ".*");
 
     rideTimeDay
         .find({
@@ -43,6 +43,8 @@ exports.getRideIDByPark = function (rideName, park) {
             parkName: park
         })
         .then(docs => {
+        
+            console.log(colors.white(newrideName))
             if (docs.length > 1) {
                 console.log(colors.cyan(rideName.substring(0, (rideName.length - 3)) + "->" + park));
                 docs.forEach(function (data) {
