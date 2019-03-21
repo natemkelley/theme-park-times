@@ -7,12 +7,20 @@ var RideTimeDayStatusScema = new Schema({
     lastUpdate: Date
 })
 
+var specialSchema = new Schema({
+    openingTime: Date,
+    closingTime: Date,
+    type: String
+}, {
+    strict: false
+})
+
 var RideTimeDaySchema = new Schema({
     schedule: new Schema({
-        date: Date,
         openingTime: Date,
         closingTime: Date,
-        type: String
+        type: String,
+        special: [specialSchema]
     }, {
         strict: false
     }),
@@ -21,36 +29,10 @@ var RideTimeDaySchema = new Schema({
     id: String,
     name: String,
     parkName: String
-},{versionKey: false})
+}, {
+    versionKey: false
+})
 
 
 mongoose.model('rideTimes', RideTimeDaySchema);
 mongoose.model('rideTimeDayStatus', RideTimeDayStatusScema);
-
-/*
-var RideTimeMinifiedSchema = new Schema({
-    id: String,
-    name: String,
-    parkName: String,
-    days: [RideTimeDaySchema],
-});
-
-var RideTimeSchema = new Schema({
-    id: String,
-    name: String,
-    waitTime: Number,
-    lastUpdate: Date,
-    status: String,
-    active: Boolean,
-    parkName: String,
-    schedule: new Schema({
-        date: Date,
-        openingTime: Date,
-        closingTime: Date,
-        type: String
-    }, {
-        strict: false
-    })
-});
-
-*/

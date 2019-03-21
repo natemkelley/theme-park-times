@@ -60,7 +60,7 @@ exports.saveRideTime = function (ride) {
                     var timeInDB = docs.rideStatus[0].lastUpdate;
 
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
-                        //console.log("\nten minutes ago "+ moment(tenMinutesAgo).format('llll'));
+                        //console.log("\neight minutes ago "+ moment(tenMinutesAgo).format('llll'));
                         //console.log("time in db "+colors.yellow(moment(timeInDB).format('llll')))
                         resolve(false);
                     } else {
@@ -137,7 +137,6 @@ exports.saveRideTime = function (ride) {
     }
 
 }
-
 
 function removeAll() {
     var removeAll = rideTimeDay.deleteMany({});

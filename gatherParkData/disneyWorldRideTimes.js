@@ -83,7 +83,6 @@ function getWaitTimesparkObject(parkObject) {
 
                     if (ride.schedule != undefined) {
                         rideObject.schedule = ride.schedule;
-                        rideObject.schedule.date = moment(rideObject.schedule.date).tz(parkObject.Timezone).format()
                     } else {
                         rideObject.schedule = null
                     }
