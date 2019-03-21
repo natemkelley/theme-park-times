@@ -22,7 +22,7 @@ exports.saveRideInformation = function (rideInformation) {
             } else {
                 saveThisRide.save(function (err) {
                     if (err) reject(false);
-                    console.log(colors.green("Info created "+rideInformation.name) +" -> "+rideInformation.id);
+                    console.log(colors.green("Info created "+rideInformation.name) +" -> id: -> "+rideInformation.rideTimeID);
                     resolve(true)
                 });
             }

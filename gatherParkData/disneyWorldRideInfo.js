@@ -7,7 +7,7 @@ module.exports = function (parksArrayForAttractions) {
 
     setTimeout(function () {
         getRideInfo();
-    }, 10);
+    }, 5000);
 
     function getRideInfo() {
         parksArrayForAttractions.forEach(function (park) {
@@ -26,7 +26,7 @@ module.exports = function (parksArrayForAttractions) {
                             .then(rideJSON => {
                                 return new Promise((resolve, reject) => {
                                     getRideTimeID(rideJSON, park).then(rideID =>{
-                                        rideJSON.id = rideID;
+                                        rideJSON.rideTimeID = rideID;
                                         disneyRideController.saveRideInformation(rideJSON)
                                     })
                                 })
@@ -37,9 +37,6 @@ module.exports = function (parksArrayForAttractions) {
             })
         })
     }
-
-    //
-
 
     function getRideData(ride, park) {
         return new Promise((resolve, reject) => {
