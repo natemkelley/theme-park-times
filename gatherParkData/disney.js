@@ -26,5 +26,3 @@ var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hol
 //require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
 
-console.log(disneyMagicKingdom.UserAgent)
-

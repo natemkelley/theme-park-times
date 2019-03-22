@@ -42,20 +42,31 @@ function getParkTimes(parkObject) {
     var returnJSON = {};
     return new Promise((resolve, reject) => {
         parkObject.GetOpeningTimes().then(function (openingTimes) {
-            var time = parkObject.TimeNow();
-            var timezone = parkObject.Timezone;
-            var date = parkObject.DateNow();
+            let time = parkObject.TimeNow();
+            let timezone = parkObject.Timezone;
+            let date = parkObject.DateNow();
 
-            var currentTime = moment(time).tz(timezone).format();
-            var openingTime = openingTimes[0].openingTime;
-            var closingTime = openingTimes[0].closingTime;
+            let currentTime = moment(time).tz(timezone).format();
+            let openingTime = openingTimes[0].openingTime;
+            let closingTime = openingTimes[0].closingTime;
 
-            returnJSON.date = date;
-            returnJSON.currentTime = currentTime;
-            returnJSON.openingTime = openingTime;
-            returnJSON.closingTime = closingTime;
+            parkObject.GetWaitTimes().then(rides => {
+                rides.forEach(function (ride) {
+                    if (ride.hasOwnProperty('schedule')) {
+                        if (ride.hasOwnProperty('special')) {
+                            openingTime = ride.schedule.special[0].openingTime;
+                            closingTime = ride.schedule.special[0].closingTime
+                        }
+                    }
 
-            resolve(returnJSON)
+                    returnJSON.date = date;
+                    returnJSON.currentTime = currentTime;
+                    returnJSON.openingTime = openingTime;
+                    returnJSON.closingTime = closingTime;
+
+                    resolve(returnJSON)
+                })
+            })
         });
     })
 }
