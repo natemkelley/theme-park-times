@@ -58,7 +58,11 @@ exports.saveRideTime = function (ride) {
                 .then(docs => {
                     var tenMinutesAgo = moment(new Date()).subtract(9, "minutes");
                     var timeInDB = docs.rideStatus[0].inputTime;
-
+                
+                    if(timeInDB == null){
+                        moment(new Date()).subtract(10, "days")
+                    }
+                
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
                         //console.log("\neight minutes ago "+ moment(tenMinutesAgo).format('llll'));
                         //console.log("time in db "+colors.yellow(moment(timeInDB).format('llll')))
