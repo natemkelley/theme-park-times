@@ -56,7 +56,7 @@ exports.saveRideTime = function (ride) {
                     }
                 })
                 .then(docs => {
-                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(8, "minutes");
+                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(9, "minutes");
                     var timeInDB = docs.rideStatus[0].lastUpdate;
 
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
