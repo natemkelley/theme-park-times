@@ -2,13 +2,13 @@ var colors = require('colors');
 var moment = require("moment");
 var mongoose = require("mongoose");
 var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
-var TWOMINUTES = 1000 * 60 * 2;
+var XMINUTES = 1000 * 60 * 10;
 
 module.exports = function (parksArray) {
     if (parksArray) {
         setInterval(function () {
             loopForWaitTimes(parksArray)
-        }, TWOMINUTES);
+        }, XMINUTES);
 
         //start the first function
         loopForWaitTimes(parksArray);
