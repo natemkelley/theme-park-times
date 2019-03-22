@@ -2,7 +2,7 @@ var colors = require('colors');
 var moment = require("moment");
 var mongoose = require("mongoose");
 var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
-var TWOMINUTES = 1000 * 60 *2;
+var TWOMINUTES = 1000 * 60 * 2;
 
 module.exports = function (parksArray) {
     if (parksArray) {
@@ -30,10 +30,7 @@ function loopForWaitTimes(parksArray) {
                     getWaitTimesparkObject(parkObject).then((parkRidesArray) => {
                         var INCREMENT = 100;
                         parkRidesArray.forEach(function (ride) {
-                            //INCREMENT += 100;
-                            //setTimeout(function () {
-                                disneyParkController.saveRideTime(ride);
-                            //}, INCREMENT);
+                            disneyParkController.saveRideTime(ride);
                         })
                     });
                 }

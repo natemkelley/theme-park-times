@@ -56,8 +56,8 @@ exports.saveRideTime = function (ride) {
                     }
                 })
                 .then(docs => {
-                    var tenMinutesAgo = moment(ride.lastUpdate).subtract(9, "minutes");
-                    var timeInDB = docs.rideStatus[0].lastUpdate;
+                    var tenMinutesAgo = moment(new Date()).subtract(9, "minutes");
+                    var timeInDB = docs.rideStatus[0].inputTime;
 
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
                         //console.log("\neight minutes ago "+ moment(tenMinutesAgo).format('llll'));
@@ -93,7 +93,8 @@ exports.saveRideTime = function (ride) {
             var newStatus = {
                 status: ride.status,
                 waitTime: ride.waitTime,
-                lastUpdate: ride.lastUpdate
+                lastUpdate: ride.lastUpdate,
+                inputTime: new Date()
             }
 
             rideTimeDay

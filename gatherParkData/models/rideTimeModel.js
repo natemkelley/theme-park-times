@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var RideTimeDayStatusScema = new Schema({
     status: String,
     waitTime: Number,
-    lastUpdate: Date
+    lastUpdate: Date,
+    inputTime: Date
 })
 
 var specialSchema = new Schema({
