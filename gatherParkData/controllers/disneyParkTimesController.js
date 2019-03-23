@@ -6,6 +6,58 @@ var colors = require('colors');
 require('../models/rideTimeModel')
 const rideTimeDay = mongoose.model('rideTimes');
 
+
+
+exports.queryForRide = function (rideName, parkName, lowerBound, upperBoud) {
+    return new Promise((resolve, reject) => {
+
+        if (!rideName) {
+            rideName = 'Splash';
+        }
+
+        if (!parkName) {
+            parkName = 'World';
+        }
+
+        if (!lowerBound) {
+            lowerBound = moment('2019-03-22').toDate();
+        }
+
+        if (!upperBoud) {
+            upperBoud = moment('2019-03-23').toDate();
+        }
+        rideTimeDay.aggregate()
+            .match({
+                'name': {
+                    '$regex': rideName
+                },
+                'parkName': {
+                    '$regex': parkName
+                },
+                'date': {
+                    $lte: upperBoud,
+                    $gte: lowerBound
+                }
+            })
+            .unwind({
+                path: '$rideStatus'
+            })
+            .group({
+                '_id': {
+                    'name': '$name',
+                    'parkName': '$parkName'
+                },
+                'average': {
+                    '$avg': '$rideStatus.waitTime'
+                }
+            })
+            .then(data => {
+                console.log(data)
+                resolve(data)
+            })
+    })
+}
+
 exports.saveRideTime = function (ride) {
     return new Promise((resolve, reject) => {
 
@@ -58,11 +110,11 @@ exports.saveRideTime = function (ride) {
                 .then(docs => {
                     var tenMinutesAgo = moment(new Date()).subtract(9, "minutes");
                     var timeInDB = docs.rideStatus[0].inputTime;
-                
-                    if(timeInDB == null){
+
+                    if (timeInDB == null) {
                         moment(new Date()).subtract(10, "days")
                     }
-                
+
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
                         //console.log("\neight minutes ago "+ moment(tenMinutesAgo).format('llll'));
                         //console.log("time in db "+colors.yellow(moment(timeInDB).format('llll')))
@@ -153,3 +205,20 @@ function removeAll() {
 }
 
 //removeAll();
+
+/*
+        .aggregate([{
+            '$match': {
+                'name': {
+                    '$regex': 'Haunt'
+                },
+                'parkName': {
+                    '$regex': 'World'
+                },
+                'date': {
+                    $lte: new Date('2019-03-23'),
+                    $gte: new Date('2019-03-22')
+                }
+            }
+        }])
+*/

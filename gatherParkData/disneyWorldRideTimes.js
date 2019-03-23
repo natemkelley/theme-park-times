@@ -4,6 +4,11 @@ var mongoose = require("mongoose");
 var disneyParkController = require('../gatherParkData/controllers/disneyParkTimesController.js')
 var XMINUTES = 1000 * 60 * 10;
 
+
+//disneyParkController.queryForRide();
+
+
+
 module.exports = function (parksArray) {
     if (parksArray) {
         setInterval(function () {

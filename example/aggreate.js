@@ -1,3 +1,37 @@
+//new one
+[
+  {
+    '$match': {
+      'name': {
+        '$regex': 'Haunt'
+      }, 
+      'date': {
+        '$lte': Date('Sat, 23 Mar 2019 00:00:00 GMT'), 
+        '$gte': Date('Fri, 22 Mar 2019 00:00:00 GMT')
+      }, 
+      'parkName': {
+        '$regex': 'World'
+      }
+    }
+  }, {
+    '$unwind': {
+      'path': '$rideStatus'
+    }
+  }, {
+    '$group': {
+      '_id': {
+        'name': '$name', 
+        'parkName': '$parkName', 
+        'day': '$date'
+      }, 
+      'average': {
+        '$avg': '$rideStatus.waitTime'
+      }
+    }
+  }
+]
+
+
 //looking for a unique day
 [
   {
