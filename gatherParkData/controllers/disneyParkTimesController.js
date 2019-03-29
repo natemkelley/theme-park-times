@@ -10,19 +10,15 @@ const rideTimeDay = mongoose.model('rideTimes');
 
 exports.queryForRide = function (rideName, parkName, lowerBound, upperBoud) {
     return new Promise((resolve, reject) => {
-
         if (!rideName) {
             rideName = 'Splash';
         }
-
         if (!parkName) {
             parkName = 'World';
         }
-
         if (!lowerBound) {
             lowerBound = moment('2019-03-22').toDate();
         }
-
         if (!upperBoud) {
             upperBoud = moment('2019-03-23').toDate();
         }
@@ -52,15 +48,14 @@ exports.queryForRide = function (rideName, parkName, lowerBound, upperBoud) {
                 }
             })
             .then(data => {
-                console.log(data)
                 resolve(data)
             })
     })
 }
 
+//ride object contains: id, name, parkName, date, schedule, status, waitTime, lastUpdate
 exports.saveRideTime = function (ride) {
     return new Promise((resolve, reject) => {
-
         getRideDayInDatabase(ride)
             .then(rideID => {
                 return rideID
@@ -116,8 +111,6 @@ exports.saveRideTime = function (ride) {
                     }
 
                     if (moment(tenMinutesAgo).isAfter(timeInDB, 'minute')) {
-                        //console.log("\neight minutes ago "+ moment(tenMinutesAgo).format('llll'));
-                        //console.log("time in db "+colors.yellow(moment(timeInDB).format('llll')))
                         resolve(false);
                     } else {
                         resolve(true);
@@ -192,33 +185,6 @@ exports.saveRideTime = function (ride) {
             })
         })
     }
-
 }
 
-function removeAll() {
-    var removeAll = rideTimeDay.deleteMany({});
-    removeAll.then(function (log, err) {
-        if (log) {
-            console.log('deleting all tweets status '.red + JSON.stringify(log).red);
-        }
-    });
-}
 
-//removeAll();
-
-/*
-        .aggregate([{
-            '$match': {
-                'name': {
-                    '$regex': 'Haunt'
-                },
-                'parkName': {
-                    '$regex': 'World'
-                },
-                'date': {
-                    $lte: new Date('2019-03-23'),
-                    $gte: new Date('2019-03-22')
-                }
-            }
-        }])
-*/

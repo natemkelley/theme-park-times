@@ -5,7 +5,7 @@ var disneyParkController = require('../gatherParkData/controllers/disneyParkTime
 var XMINUTES = 1000 * 60 * 10;
 
 
-disneyParkController.queryForRide();
+//disneyParkController.queryForRide();
 
 module.exports = function (parksArray) {
     if (parksArray) {

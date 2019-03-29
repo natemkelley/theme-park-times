@@ -8,21 +8,57 @@ var disneyRideInfo = require('../gatherParkData/controllers/disneyParkRideInfoCo
 const csv = require('csvtojson')
 
 
-module.exports = function (parksArrayForAttractions) {
-
-
+module.exports = function () {
+    csvFilesToDatabase();
 
 }
 
 function csvFilesToDatabase() {
+    let historicalFolder = './example/historical/';
 
-    /*    
-    csv()
-    .fromFile(csvFilePath)
-    .then((jsonObj)=>{
-        console.log(jsonObj);
+
+
+    function processCSV(filePath, cb) {
+
+        csv()
+            .fromFile(filePath)
+            .then((jsonObj) => {
+                console.log('done with', filePath);
+                cb();
+            })
+    }
+
+
+    fs.readdir(historicalFolder, (err, files) => {
+
+        let requests = files.reduce((promiseChain, file) => {
+            return promiseChain.then(() => new Promise((resolve) => {
+                let csvFilePath = historicalFolder + file;
+                processCSV(csvFilePath, resolve);
+            }));
+        }, Promise.resolve());
+
+        requests.then(() => console.log('done'))
+
     })
-        */
+
+
+
+
+
+
+    /*fs.readdir(historicalFolder, (err, files) => {
+        files.forEach(file => {
+            csvFilePath = historicalFolder + file;
+            console.log(csvFilePath, counter);
+            counter++;
+            csv()
+                .fromFile(csvFilePath)
+                .then((jsonObj) => {
+                    console.log(colors.yellow(csvFilePath));
+                })
+        });
+    });*/
 
 }
 
@@ -87,3 +123,9 @@ function download(url, shortName) {
     })
 
 };
+
+/*
+
+
+
+*/
