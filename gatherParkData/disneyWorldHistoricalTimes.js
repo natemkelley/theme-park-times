@@ -44,22 +44,6 @@ function csvFilesToDatabase() {
 
 
 
-
-
-
-    /*fs.readdir(historicalFolder, (err, files) => {
-        files.forEach(file => {
-            csvFilePath = historicalFolder + file;
-            console.log(csvFilePath, counter);
-            counter++;
-            csv()
-                .fromFile(csvFilePath)
-                .then((jsonObj) => {
-                    console.log(colors.yellow(csvFilePath));
-                })
-        });
-    });*/
-
 }
 
 function scrubfordata() {
