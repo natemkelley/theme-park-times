@@ -9,14 +9,11 @@ const csv = require('csvtojson')
 
 
 module.exports = function () {
-    csvFilesToDatabase();
-
+    //csvFilesToDatabase();
 }
 
 function csvFilesToDatabase() {
     let historicalFolder = './example/historical/';
-
-
 
     function processCSV(filePath, cb) {
 
@@ -41,9 +38,6 @@ function csvFilesToDatabase() {
         requests.then(() => console.log('done'))
 
     })
-
-
-
 }
 
 function scrubfordata() {
@@ -107,9 +101,3 @@ function download(url, shortName) {
     })
 
 };
-
-/*
-
-
-
-*/

@@ -25,5 +25,5 @@ require('./disneyWorldRideTimes')(parksArray);
 var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios','disneyland','disney-california-adventure'];
 require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
-require('./disneyWorldHistoricalTimes.js')();
+//require('./disneyWorldHistoricalTimes.js')();
 

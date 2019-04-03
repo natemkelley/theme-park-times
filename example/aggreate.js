@@ -1,3 +1,36 @@
+[
+  {
+    '$match': {
+      'name': {
+        '$regex': 'Avatar Fl'
+      }
+    }
+  }, {
+    '$unwind': {
+      'path': '$rideStatus'
+    }
+  }, {
+    '$group': {
+      '_id': {
+        'hour': {
+          '$year': '$date'
+        }, 
+        'name': '$name', 
+        'parkName': '$parkName'
+      }, 
+      'average': {
+        '$avg': '$rideStatus.waitTime'
+      }, 
+      'max': {
+        '$max': '$rideStatus.waitTime'
+      }, 
+      'min': {
+        '$min': '$rideStatus.waitTime'
+      }
+    }
+  }
+]
+
 //new one
 [
   {
