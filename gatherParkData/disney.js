@@ -27,3 +27,6 @@ require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
 //require('./disneyWorldHistoricalTimes.js')();
 
+
+//https://www.latimes.com/projects/la-fi-disneyland-ride-wait-time/
+//https://www.isitpacked.com/live-crowd-trackers/disneyland/
