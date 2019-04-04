@@ -100,7 +100,6 @@ exports.getDownTime = function (rideName, parkName, lowerBound, upperBound) {
                 'downTime': -1
             })
             .then(data => {
-                console.log(colors.green('!!!!!!!!!!!!!!!!!!!!!!!'))
                 console.log(data)
                 resolve(data)
             })
