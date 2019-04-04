@@ -7,7 +7,107 @@ require('../models/rideTimeModel')
 const rideTimeDay = mongoose.model('rideTimes');
 
 
+exports.getDownTime = function (rideName, parkName, lowerBound, upperBound) {
+    return new Promise((resolve, reject) => {
+        if (!rideName) {
+            rideName = 'Splash Mount';
+        }
+        if (!parkName) {
+            parkName = 'World';
+        }
+        if (!lowerBound) {
+            lowerBound = moment('2010-03-22').toDate();
+        }
+        if (!upperBound) {
+            upperBound = moment(new Date()).toDate();
+        }
 
+        rideTimeDay.aggregate()
+            .match({
+                'name': {
+                    '$regex': rideName
+                },
+                'parkName': {
+                    '$regex': parkName
+                },
+                'date': {
+                    $lte: upperBound,
+                    $gte: lowerBound
+                }
+            })
+            .unwind({
+                path: '$rideStatus'
+            })
+            .group({
+                '_id': {
+                    'name': '$name',
+                    'parkName': '$parkName',
+                    'date': '$date'
+                },
+                'DownCount': {
+                    '$sum': {
+                        '$cond': [
+                            {
+                                '$eq': [
+                '$rideStatus.status', 'Down'
+              ]
+            },
+                            1, 0
+          ]
+                    }
+                },
+                'OpCount': {
+                    '$sum': {
+                        '$cond': [
+                            {
+                                '$eq': [
+                '$rideStatus.status', 'Operating'
+              ]
+            },
+                            1, 0
+          ]
+                    }
+                },
+                'ClosedCount': {
+                    '$sum': {
+                        '$cond': [
+                            {
+                                '$eq': [
+                '$rideStatus.status', 'Closed'
+              ]
+            },
+                            1, 0
+          ]
+                    }
+                },
+                'TotCount': {
+                    '$sum': 1
+                }
+            })
+            .project({
+                'name': 1,
+                'ClosedCount': 1,
+                'DownCount': 1,
+                'OpCount': 1,
+                'TotCount': 1,
+                'downTime': {
+                    '$divide': [
+                        '$DownCount', '$TotCount'
+                    ]
+                }
+            })
+            .sort({
+                'downTime': -1
+            })
+            .then(data => {
+                console.log(colors.green('!!!!!!!!!!!!!!!!!!!!!!!'))
+                console.log(data)
+                resolve(data)
+            })
+    })
+}
+
+//get ride array for specific times
 exports.queryForRide = function (rideName, parkName, lowerBound, upperBoud) {
     return new Promise((resolve, reject) => {
         if (!rideName) {
@@ -186,5 +286,3 @@ exports.saveRideTime = function (ride) {
         })
     }
 }
-
-

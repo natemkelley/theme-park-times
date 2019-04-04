@@ -73,7 +73,7 @@
     }
   }, {
     '$sort': {
-      'ClosedCount': -1
+      'downTime': -1
     }
   }
 ] 
