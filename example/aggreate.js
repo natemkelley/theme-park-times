@@ -3,7 +3,11 @@
   {
     '$match': {
       'name': {
-        '$regex': 'Avatar Fl'
+        '$regex': 'Splash Moun'
+      }, 
+      'date': {
+        '$lte': Date('Thu, 04 Apr 2019 06:00:00 GMT'), 
+        '$gte': Date('Wed, 03 Apr 2019 06:00:00 GMT')
       }
     }
   }, {
@@ -15,8 +19,17 @@
       '_id': {
         'name': '$name', 
         'parkName': '$parkName', 
-        'year': {
-          '$year': '$date'
+        'date': '$date'
+      }, 
+      'DownCount': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$rideStatus.status', 'Down'
+              ]
+            }, 1, 0
+          ]
         }
       }, 
       'OpCount': {
@@ -24,7 +37,18 @@
           '$cond': [
             {
               '$eq': [
-                '$rideStatus.status', 'Down'
+                '$rideStatus.status', 'Operating'
+              ]
+            }, 1, 0
+          ]
+        }
+      }, 
+      'ClosedCount': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$rideStatus.status', 'Closed'
               ]
             }, 1, 0
           ]
@@ -37,15 +61,24 @@
   }, {
     '$project': {
       'name': 1, 
+      'ClosedCount': 1, 
+      'DownCount': 1, 
+      'OpCount': 1, 
+      'TotCount': 1, 
       'downTime': {
         '$divide': [
-          '$OpCount', '$TotCount'
+          '$DownCount', '$TotCount'
         ]
       }
+    }
+  }, {
+    '$sort': {
+      'ClosedCount': -1
     }
   }
 ] 
 
+//
 [
   {
     '$match': {
