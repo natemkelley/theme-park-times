@@ -1,3 +1,51 @@
+//downtime
+[
+  {
+    '$match': {
+      'name': {
+        '$regex': 'Avatar Fl'
+      }
+    }
+  }, {
+    '$unwind': {
+      'path': '$rideStatus'
+    }
+  }, {
+    '$group': {
+      '_id': {
+        'name': '$name', 
+        'parkName': '$parkName', 
+        'year': {
+          '$year': '$date'
+        }
+      }, 
+      'OpCount': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$rideStatus.status', 'Down'
+              ]
+            }, 1, 0
+          ]
+        }
+      }, 
+      'TotCount': {
+        '$sum': 1
+      }
+    }
+  }, {
+    '$project': {
+      'name': 1, 
+      'downTime': {
+        '$divide': [
+          '$OpCount', '$TotCount'
+        ]
+      }
+    }
+  }
+]
+
 [
   {
     '$match': {
