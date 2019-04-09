@@ -22,7 +22,7 @@ require('./disneyWorldRideTimes')(parksArray);
 
 
 //start collecting park information
-var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios','disneyland','disney-california-adventure'];
+var parksArrayForAttractions = ['magic-kingdom', 'animal-kingdom', 'epcot', 'hollywood-studios', 'disneyland', 'disney-california-adventure'];
 require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
 //require('./disneyWorldHistoricalTimes.js')();
@@ -30,3 +30,8 @@ require('./disneyWorldRideInfo')(parksArrayForAttractions);
 
 //https://www.latimes.com/projects/la-fi-disneyland-ride-wait-time/
 //https://www.isitpacked.com/live-crowd-trackers/disneyland/
+
+//https://datatables.net/
+//highcharts
+//moment
+//todays high
