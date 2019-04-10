@@ -1,0 +1,16 @@
+create adobe xd template
+- home
+- ride
+- search
+- crowd calendar
+- predicator tool
+- land
+- interactive maps
+- real time
+- compirson charts
+- down time
+- gallery
+- 
+
+
+- setup passport with Google/FB
