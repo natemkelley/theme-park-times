@@ -6,7 +6,7 @@ var XMINUTES = 1000 * 60 * 10;
 
 
 //disneyParkController.queryForRide();
-disneyParkController.getDownTime();
+//disneyParkController.getDownTime();
 
 module.exports = function (parksArray) {
     if (parksArray) {
